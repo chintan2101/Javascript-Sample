@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>      
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+<body>
+<div style="margin-left:466px;margin-top:40px"  >
+<h3 style="margin-left:49px"> Be great at what you do<h3>
+<h4 style="margin-left:49px;margin-top:-9px">Get started<h4>
+<br>
+<form method="post">
+	Firstname : <input type="text" id="fname" onkeyup="geterr()" style="margin-left:50px"  required/>  <label id="fnamelable"></label>  <br> <br>
+	Lastname : <input type="text" id="lname"  onkeyup="geterr1()" style="margin-left:50px"  required /> <label id="lnamelable"></label> <br> <br>
+	Zipcode : <input type="text" id="zcode"   onkeyup="geterr2()" style="margin-left:64px"  required /> <label id="zcodelable"></label> <br> <br>
+	Phoneno  : <input type="text" id="phn"  onkeyup="geterr3()" style="margin-left:55px"  required /> <label id="phnlabel"></label> <br> <br>
+      Credit Card  : <input type="text" id="ctr"  onkeyup="geterr4()" style="margin-left:36px" required />   <label id="crlabel"></label><br> <img src="" id="img12"><br> <br>
+	<input type="button" id="submt" value="submit" onclick="validateform()"  class="btn btn-primary" style="margin-left:141px" data-dismiss="alert" aria-label="Close">
+
+
+</form>
+
+</div>
+<script>
+
+var fname1 = false;
+var lname1 = false;
+var zpcode  = false;
+var phneno  = false;
+var crdno  = false;
+
+function geterr()
+ {
+      var firstname = document.getElementById("fname").value ;
+	 
+     if (!firstname.match(/^[A-Za-z]+$/)) 
+      { 	
+                    fname1=false;
+      		 document.getElementById("fnamelable").innerHTML="Enter Alphabets Only in Firstname";
+      		 document.getElementById("fnamelable").style.color="red";
+      		 document.getElementById("fname").style.borderColor= ("red");
+      } 
+      else
+      {
+            fname1=true;
+      	 document.getElementById("fnamelable").innerHTML="";
+      	 document.getElementById("fname").style.borderColor= ("grey");
+      }
+}
+
+function geterr1()
+ {
+      var lastname = document.getElementById("lname").value ;
+	 
+      if (!lastname.match(/^[A-Za-z]+$/)) 
+      { 	
+              lname1=false;
+      		 document.getElementById("lnamelable").innerHTML="Enter Alphabets Only in Lastname";
+      		 document.getElementById("lnamelable").style.color="red";
+      		 document.getElementById("lname").style.borderColor= ("red");
+      } 
+      else
+      {
+            lname1=true;
+      	 document.getElementById("lnamelable").innerHTML="";
+      	 document.getElementById("lname").style.borderColor= ("grey");
+      }
+}
+
+function geterr2()
+ {
+      var zipcode = document.getElementById("zcode").value ;
+      var abc=zipcode.toString().length;
+	 
+      if (!zipcode.match(/^[0-9]+$/) ) 
+      { 	
+                   zpcode=false;
+      		 document.getElementById("zcodelable").innerHTML="Numbers Only in Zipcode";
+      		 document.getElementById("zcodelable").style.color="red";
+      } 
+      else if(abc!=5)
+      {
+                   zpcode=false;
+      		 document.getElementById("zcodelable").innerHTML="enter valid zip.. 5 digit only";
+      		 document.getElementById("zcodelable").style.color="red";
+      }
+
+      else
+      {
+            zpcode=true;
+      	 document.getElementById("zcodelable").innerHTML="";
+      	
+      }
+}
+
+function geterr3()
+ {
+      var phoneno = document.getElementById("phn").value ;
+      console.log(phoneno);
+      var str2 = phoneno.toString().length;
+      console.log(str2);
+      if (str2 === 3 && phoneno.match(/^[0-9]+$/) ) 
+      {
+      		
+      		           var str1="(";
+                        var str3=")";
+				var a=str1.concat(phoneno);
+				var b = a.concat(str3);
+				document.getElementById("phn").value = b;
+	}
+
+       if (str2 === 8 ) 
+      {
+                       var str4="-";
+                        var a=phoneno.concat(str4);
+                        document.getElementById("phn").value = a;
+      }
+
+      if(str2 >= 14 || !phoneno.match(/^[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/))
+      {
+            phneno=false;
+            document.getElementById("phnlabel").innerHTML="Enter Valid phoneno";
+            document.getElementById("phnlabel").style.color="red";
+      }
+      else
+      {
+            phneno=true;
+             document.getElementById("phnlabel").innerHTML="";
+      }
+}
+
+function geterr4()
+ {
+      var creditcard = document.getElementById("ctr").value ;
+      var a=creditcard.toString().length;
+      var b=creditcard.split(" ");
+      console.log(b);
+
+
+      if (!creditcard.match(/^[0-9]+$/) ) 
+      {     
+                  crdno  = false;
+                   document.getElementById("crlabel").innerHTML="Numbers Only in creditcard";
+                   document.getElementById("crlabel").style.color="red";
+      } 
+      else 
+      {
+             crdno  = true;
+             document.getElementById("crlabel").innerHTML="";
+
+      if (creditcard.charAt(0) == 4) 
+      {          console.log(b);
+                  document.getElementById("img12").src = "images/ae.jpg";
+                  document.getElementById("img12").style.height = "36px";
+                  document.getElementById("img12").style.width = "62px";
+                   document.getElementById("img12").style.marginLeft = "142px";
+      } 
+
+       if (creditcard.charAt(0) ==3) 
+      {          console.log(b);
+                  document.getElementById("img12").src = "images/visa.gif";
+                  document.getElementById("img12").style.height = "36px";
+                  document.getElementById("img12").style.width = "62px";
+                   document.getElementById("img12").style.marginLeft = "142px";
+      }
+
+       if (creditcard.charAt(0) == 5) 
+      {          console.log(b);
+                  document.getElementById("img12").src = "images/master.png";
+                  document.getElementById("img12").style.height = "36px";
+                  document.getElementById("img12").style.width = "62px";
+                   document.getElementById("img12").style.marginLeft = "142px";
+      }
+
+}
+     
+}
+
+function validateform() {
+
+      if(fname1 == true && lname1 == true && zpcode == true && phneno== true && crdno == true)
+      {
+            alert("Form Submitted Successfully");
+
+      }
+      else
+      {
+        var er1=  document.getElementById("fnamelable").innerHTML;
+        var er2=  document.getElementById("lnamelable").innerHTML;
+        var er3=  document.getElementById("zcodelable").innerHTML;
+        var er4=  document.getElementById("phnlabel").innerHTML;
+        var er5=  document.getElementById("crlabel").innerHTML;
+
+            alert("please Fill correrct value" + "\n" +  er1  + "\n"  +  er2  + "\n" +   er3  + "\n" +   er4  + "\n" +   er5  );
+      }
+
+
+}
+
+
+
+</script>
+
+</body>
+</html>
